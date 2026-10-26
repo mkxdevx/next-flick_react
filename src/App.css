@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-* {
+/* * {
     font-family: "Montserrat", sans-serif;
     padding: 0;
     margin: 0;
@@ -38,7 +38,7 @@ button {
 
 .row {
     padding: 0 48px;
-}
+} */
 
 
 /* 
@@ -212,6 +212,12 @@ MENU BAR
 }
 
 .menu--open .nav__overlay {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.nav__overlay--open {
     visibility: visible;
     opacity: 1;
     transform: translateX(0);

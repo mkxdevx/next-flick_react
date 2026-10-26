@@ -52,7 +52,7 @@ NAV
 
 */
 
-nav {
+/* nav {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -151,7 +151,7 @@ nav {
 .nav__link--primary:active {
   transform: scale(0.9);
   box-shadow: none;
-}
+} */
 
 /* 
 

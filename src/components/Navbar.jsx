@@ -1,61 +1,70 @@
+import { useState } from 'react'
+
 const Navbar = () => {
+  const [menuOpen, setMenuOpen] = useState(false)
+
+  const closeMenu = () => setMenuOpen(false)
+
   return (
     <nav>
-      <div class="nav__content">
-        <figure class="nav__logo--wrapper">
-          <img src="./assets/logo-light(1).png" alt="" class="nav__logo--img" />
-          <h2 class="nav__logo--name">
-            Next<span class="crimson">Flick</span>
+      <div className="nav__content">
+        <figure className="nav__logo--wrapper">
+          <img src="./assets/logo-light(1).png" alt="" className="nav__logo--img" />
+          <h2 className="nav__logo--name">
+            Next<span className="crimson">Flick</span>
           </h2>
         </figure>
-        <ul class="nav__link--list">
+        <ul className="nav__link--list">
           <li>
-            <a href="./index.html" className="nav__link">
+            <Link to="/" className="nav__link">
               Home
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="./search.html" className="nav__link">
+            <Link to="/search" className="nav__link">
               Find your movie
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="./search.html" className="nav__link nav__link--primary">
+            <Link to="/browse" className="nav__link nav__link--primary">
               Browse
-            </a>
+            </Link>
           </li>
         </ul>
-        <button className="menu__btn menu__btn--open" onClick={openMenu}>
+        <button
+          className="menu__btn menu__btn--open"
+          onClick={() => setMenuOpen(true)}
+          aria-label="Open menu"
+        >
           <i className="fa-solid fa-bars"></i>
         </button>
       </div>
-      <div className="nav__overlay">
-        <div className="menu__btn menu__btn--close" onClick={closeMenu}>
+      <div className={`nav__overlay${menuOpen ? ' nav__overlay--open' : ''}`}>
+        <button
+          className="menu__btn menu__btn--close"
+          onClick={closeMenu}
+          aria-label="Close menu"
+        >
           <i className="fa-solid fa-xmark"></i>
-        </div>
+        </button>
         <ul className="nav__overlay--list">
           <li>
-            <a
-              href="./index.html"
-              className="nav__overlay--link"
-              onClick={closeMenu} 
-            >
+            <Link to="/" className="nav__overlay--link" onClick={closeMenu}>
               Home
-            </a>
+            </Link>
           </li>
           <li>
-            <a
-              href="./search.html"
-              class="nav__overlay--link"
-              onclick="closeMenu()"
+            <Link to="/search"
+              className="nav__overlay--link"
+              onClick={closeMenu}
             >
               Find your movie
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="./search.html" className="nav__overlay--link">
+            <Link to="/browse" className="nav__overlay--link" onClick={closeMenu}>
               Browse
-            </a>
+            </Link>
           </li>
         </ul>
       </div>

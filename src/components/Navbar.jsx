@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
+import smallDarkLogo from '../assets/logo-light(1)-1.png'
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -9,7 +11,7 @@ const Navbar = () => {
     <nav>
       <div className="nav__content">
         <figure className="nav__logo--wrapper">
-          <img src="./assets/logo-light(1).png" alt="" className="nav__logo--img" />
+          <img src={smallDarkLogo} alt="Small Next Flick Logo" className="nav__logo--img" />
           <h2 className="nav__logo--name">
             Next<span className="crimson">Flick</span>
           </h2>

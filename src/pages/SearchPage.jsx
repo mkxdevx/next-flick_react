@@ -1,3 +1,5 @@
+import MovieCard from "../components/MovieCard";
+
 const SearchPage = () => {
   return (
     <div>
@@ -37,21 +39,7 @@ const SearchPage = () => {
               </select>
             </div>
             <div class="movies">
-              <div class="movie">
-                <img
-                  src=""
-                  alt=""
-                  class="movie__poster"
-                  onerror="this.closest('.movie').remove()"
-                />
-                <h3 class="movie__title">Title</h3>
-                <p class="movie__year">Year</p>
-              </div>
-              <div class="movie__skeleton">
-                <div class="skeleton skeleton__img"></div>
-                <div class="skeleton skeleton__movie--title"></div>
-                <div class="skeleton skeleton__movie--year"></div>
-              </div>
+              <MovieCard />
             </div>
           </div>
         </div>

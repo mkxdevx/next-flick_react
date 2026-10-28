@@ -1,8 +1,8 @@
 import { Route, Routes } from 'react-router-dom'
 import './App.css'
 import Navbar from './components/Navbar.jsx'
-import HomePage from './pages/HomePage.jsx'
-import SearchPage from './pages/SearchPage.jsx'
+import HomePage from './app/HomePage.jsx'
+import SearchPage from './app/SearchPage.jsx'
 import Footer from './components/Footer.jsx'
 
 function App() {

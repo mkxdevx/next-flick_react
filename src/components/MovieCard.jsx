@@ -1,14 +1,14 @@
 const MovieCard = () => {
   return (
-    <div class="movie">
+    <div className="movie">
       <img
-        src=""
+        src={`https://via.placeholder.com/300x450?text=Movie+Poster`}
         alt=""
-        class="movie__poster"
-        onerror="this.closest('.movie').remove()"
+        className="movie__poster"
+        onError={(e) => e.target.closest('.movie').remove()}
       />
-      <h3 class="movie__title">Title</h3>
-      <p class="movie__year">Year</p>
+      <h3 className="movie__title">Title</h3>
+      <p className="movie__year">Year</p>
     </div>
   );
 };

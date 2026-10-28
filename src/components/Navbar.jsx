@@ -1,6 +1,9 @@
+"use client";
+
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
-import smallDarkLogo from '../assets/logo-light(1)-1.png'
+import Link from 'next/link';
+import smallLightLogo from '../assets/logo-light(1)-1.png'
+import Image from 'next/image';
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -11,24 +14,24 @@ const Navbar = () => {
     <nav>
       <div className="nav__content">
         <figure className="nav__logo--wrapper">
-          <img src={smallDarkLogo} alt="Small Next Flick Logo" className="nav__logo--img" />
+          <Image src={smallLightLogo} alt="Small Next Flick Logo" className="nav__logo--img" />
           <h2 className="nav__logo--name">
             Next<span className="crimson">Flick</span>
           </h2>
         </figure>
         <ul className="nav__link--list">
           <li>
-            <Link to="/" className="nav__link">
+            <Link href="/" className="nav__link">
               Home
             </Link>
           </li>
           <li>
-            <Link to="/search" className="nav__link">
+            <Link href="/search" className="nav__link">
               Find your movie
             </Link>
           </li>
           <li>
-            <Link to="/browse" className="nav__link nav__link--primary">
+            <Link href="/browse" className="nav__link nav__link--primary">
               Browse
             </Link>
           </li>
@@ -51,12 +54,12 @@ const Navbar = () => {
         </button>
         <ul className="nav__overlay--list">
           <li>
-            <Link to="/" className="nav__overlay--link" onClick={closeMenu}>
+            <Link href="/" className="nav__overlay--link" onClick={closeMenu}>
               Home
             </Link>
           </li>
           <li>
-            <Link to="/search"
+            <Link href="/search"
               className="nav__overlay--link"
               onClick={closeMenu}
             >
@@ -64,7 +67,7 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link to="/browse" className="nav__overlay--link" onClick={closeMenu}>
+            <Link href="/browse" className="nav__overlay--link" onClick={closeMenu}>
               Browse
             </Link>
           </li>

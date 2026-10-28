@@ -1,47 +1,50 @@
-import smallDarkLogo from "../assets/logo-light(1)-1.png";
+import Link from "next/link";
+import smallLightLogo from "../assets/logo-light(1)-1.png";
+import Image from "next/image";
 
 const Footer = () => {
   return (
     <footer>
-      <div class="container">
-        <div class="row">
-          <div class="footer__links">
-            <a href="./index.html" class="footer__link">
+      <div className="container">
+        <div className="row">
+          <div className="footer__links">
+            <Link href="/" className="footer__link">
               Home
-            </a>
-            <a href="./search.html" class="footer__link">
+            </Link>
+            <Link href="/browse" className="footer__link">
               Browse
-            </a>
-            <a href="#" class="footer__link">
+            </Link>
+            <Link href="/" className="footer__link">
               About
-            </a>
-            <a href="#" class="footer__link">
+            </Link>
+            <Link href="/" className="footer__link">
               API
-            </a>
-            <a href="#" class="footer__link">
-              Contact
-            </a>
-            <a href="#" class="footer__link">
+            </Link>
+            <Link href="/" className="footer__link">
               Support
-            </a>
-            <a href="#" class="footer__link">
+            </Link>
+            <Link href="/" className="footer__link">
               Privacy Policy
-            </a>
-            <a href="#" class="footer__link">
+            </Link>
+            <Link href="/" className="footer__link">
               Terms of Service
-            </a>
+            </Link>
           </div>
-          <div class="footer__bottom">
-            <img
-              src={smallDarkLogo}
+          <div className="footer__bottom">
+            <Image
+              src={smallLightLogo}
               alt="Small Next Flick Logo"
-              class="footer__logo"
+              className="footer__logo"
             />
-            <div class="footer__socials">
-              <a class="footer__social">GitHub</a>
-              <a class="footer__social">LinkedIn</a>
+            <div className="footer__socials">
+              <Link href="#" className="footer__social">
+                GitHub
+              </Link>
+              <Link href="#" className="footer__social">
+                LinkedIn
+              </Link>
             </div>
-            <p class="footer__copyright">
+            <p className="footer__copyright">
               &copy; 2026 NextFlick | Mikayla Esparza
             </p>
           </div>

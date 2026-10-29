@@ -216,7 +216,7 @@ MENU BAR
   overflow-y: hidden;
 }
 
-.menu--open .nav__overlay {
+.menu--open, .nav__overlay--open {
   visibility: visible;
   opacity: 1;
   transform: translateX(0);

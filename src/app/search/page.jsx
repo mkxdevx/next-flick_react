@@ -1,12 +1,6 @@
-import MovieResults from "../../components/MovieResults";
-import MovieSearch from "../../components/MovieSearch";
+import SearchPage from "../../components/SearchPage";
+
 
 export default function Search() {
-  return (
-    <div>
-      <MovieSearch />
-      <MovieResults />
-    </div>
-  )
-  ;
+  return <SearchPage />;
 }

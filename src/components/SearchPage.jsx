@@ -7,26 +7,36 @@ const SearchPage = () => {
   const [sortOption, setSortOption] = useState("");
   const [query, setQuery] = useState("");
   const [movies, setMovies] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
-  async function handleSearch(event) {
+  const handleSearch = async (event) => {
     event.preventDefault();
 
-    const response = await fetch(
-      `/api/movies?query=${encodeURIComponent(query)}`,
-    );
-    const data = await response.json();
+    const searchQuery = query.trim();
+    if (!searchQuery) return;
 
-    if (!data || !data.results || data.results.length === 0) {
-      console.error("No results found");
+    setIsLoading(true);
+
+    try {
+      const response = await fetch(
+        `/api/movies?query=${encodeURIComponent(searchQuery)}`,
+      );
+      const data = await response.json();
+
+      if (!response.ok) {
+        console.error("Error searching movies:", data.error);
+        setMovies([]);
+        return;
+      }
+
+      setMovies(data.results ?? []);
+    } catch (error) {
+      console.error("Error searching movies:", error);
       setMovies([]);
-      return;
+    } finally {
+      setIsLoading(false);
     }
-
-    if (!response.ok) {
-      throw new Error(data.error || "Failed to search movies");
-    }
-    setMovies(data.results);
-  }
+  };
 
   return (
     <div>
@@ -37,7 +47,7 @@ const SearchPage = () => {
               <h1 className="search__header--title">
                 Discover your Next Watch!
               </h1>
-              <div className="search__bar">
+              <form className="search__bar" onSubmit={handleSearch}>
                 <input
                   type="text"
                   placeholder="Search movies..."
@@ -45,11 +55,11 @@ const SearchPage = () => {
                   value={query}
                   onChange={(event) => setQuery(event.target.value)}
                 ></input>
-                <button className="search__btn" onClick={handleSearch}>
+                <button className="search__btn" type="submit">
                   <i className="fa-solid fa-magnifying-glass search__icon--default"></i>
                   <i className="fa-solid fa-circle-notch search__icon--loading"></i>
                 </button>
-              </div>
+              </form>
             </div>
           </div>
         </div>
@@ -81,7 +91,13 @@ const SearchPage = () => {
               <div className="movies">
                 {movies.map((movie) => {
                   console.log(movie);
-                  return <MovieCard key={movie.id} movie={movie} />;
+                  return (
+                    <MovieCard
+                      key={movie.id}
+                      movie={movie}
+                      isLoading={isLoading}
+                    />
+                  );
                 })}
               </div>
             )}

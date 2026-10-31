@@ -85,7 +85,6 @@ const SearchPage = () => {
                 <option value="OLD_TO_NEW">Sort oldest to newest</option>
               </select>
             </div>
-            <DiscoverMovies />
             {movies.length === 0 ? (
               <div className="movie__no-results">
                 <p>No movies found</p>

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import MovieCard from "./MovieCard";
+import DiscoverMovies from "./DiscoverMovies";
 
 const SearchPage = () => {
   const [sortOption, setSortOption] = useState("");
@@ -13,6 +14,7 @@ const SearchPage = () => {
     event.preventDefault();
 
     const searchQuery = query.trim();
+
     if (!searchQuery) return;
 
     setIsLoading(true);
@@ -83,6 +85,7 @@ const SearchPage = () => {
                 <option value="OLD_TO_NEW">Sort oldest to newest</option>
               </select>
             </div>
+            <DiscoverMovies />
             {movies.length === 0 ? (
               <div className="movie__no-results">
                 <p>No movies found</p>

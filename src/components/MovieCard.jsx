@@ -1,10 +1,8 @@
 import { useState } from "react";
 import MovieSkeleton from "./MovieSkeleton";
-import Image from "next/image";
+import MoviePoster from "./MoviePoster";
 
 const MovieCard = ({ movie, isLoading }) => {
-  const [hasPosterError, setHasPosterError] = useState(false);
-
   if (isLoading) {
     return <MovieSkeleton />;
   }
@@ -17,24 +15,13 @@ const MovieCard = ({ movie, isLoading }) => {
     )
   }
 
+  const movieReleaseDate = movie.release_date?.slice(0,4) || "Release Date Unknown";
+
   return (
     <div className="movie">
-      {movie.poster_path && !hasPosterError ? (
-        <Image
-          src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-          alt={`${movie.title} poster`}
-          width={500}
-          height={750}
-          quality={100}
-          priority
-          className="movie__poster"
-          onError={() => setHasPosterError(true)}
-        />
-      ) : (
-        <div className="movie__poster movie__poster--missing" aria-hidden="true" />
-      )}
+      <MoviePoster movie={movie} isLoading={isLoading} />
       <h3 className="movie__title">{movie.title}</h3>
-      <p className="movie__year">{movie.release_date}</p>
+      <p className="movie__year">{movieReleaseDate}</p>
     </div>
   );
 };

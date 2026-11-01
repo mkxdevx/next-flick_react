@@ -16,6 +16,7 @@ const Navbar = () => {
             src={smallLightLogo}
             alt="Small Next Flick Logo"
             className="nav__logo--img"
+            quality={75}
           />
           <h2 className="nav__logo--name">
             Next<span className="crimson">Flick</span>

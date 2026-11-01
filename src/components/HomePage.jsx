@@ -9,7 +9,7 @@ const HomePage = () => {
       <div className="container">
         <div className="row">
           <div className="landing__content">
-            <Image src={LightLogo} alt="Next Flick Logo" className="landing__logo" />
+            <Image src={LightLogo} alt="Next Flick Logo" className="landing__logo" quality={75} />
             <div className="landing__search">
               <input
                 type="text"

@@ -35,6 +35,7 @@ const Footer = () => {
               src={smallLightLogo}
               alt="Small Next Flick Logo"
               className="footer__logo"
+              quality={75}
             />
             <div className="footer__socials">
               <Link href="#" className="footer__social">

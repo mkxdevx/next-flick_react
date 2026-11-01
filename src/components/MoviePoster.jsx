@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Image from "next/image";
-import posterUnavailable from "../../public/Poster-unavailable.png";
+import posterUnavailable from "../../src/assets/Poster-unavailable.png";
 
 const MoviePoster = ({ movie, isLoading }) => {
   const [hasPosterError, setHasPosterError] = useState(false);

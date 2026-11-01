@@ -1,17 +1,18 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import MovieCard from "./MovieCard";
+import { fetchTMDB } from "../../lib/tmdb";
 
 const SearchPage = () => {
   const [query, setQuery] = useState("");
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [hasSearched, setHasSearched] = useState(false);
+  const searchParams = useSearchParams();
 
-  const handleSearch = async (event) => {
-    event.preventDefault();
-
+  const searchMovies = async (query) => {
     const searchQuery = query.trim();
 
     if (!searchQuery) return;
@@ -40,19 +41,44 @@ const SearchPage = () => {
     }
   };
 
+  useEffect(() => {
+    const queryParam = searchParams.get("query");
+
+    if (!queryParam) return;
+
+    setQuery(queryParam);
+
+    console.log("search query:", queryParam);
+
+    searchMovies(queryParam);
+  }, [searchParams]);
+
+  const handleSearch = (event) => {
+    event.preventDefault();
+    searchMovies(query);
+  };
+
   const handleSort = (event) => {
     if (!hasSearched) return;
     console.log(event.target.value);
-    console.log(movies.map(movie => movie.release_date));
+    console.log(movies.map((movie) => movie.release_date));
     const value = event.target.value;
     if (value === "A_TO_Z") {
       setMovies([...movies].sort((a, b) => a.title.localeCompare(b.title)));
     } else if (value === "Z_TO_A") {
       setMovies([...movies].sort((a, b) => b.title.localeCompare(a.title)));
     } else if (value === "NEW_TO_OLD") {
-      setMovies([...movies].sort((a, b) => b.release_date.localeCompare(a.release_date)));
+      setMovies(
+        [...movies].sort((a, b) =>
+          b.release_date.localeCompare(a.release_date),
+        ),
+      );
     } else if (value === "OLD_TO_NEW") {
-      setMovies([...movies].sort((a, b) => a.release_date.localeCompare(b.release_date)));
+      setMovies(
+        [...movies].sort((a, b) =>
+          a.release_date.localeCompare(b.release_date),
+        ),
+      );
     }
   };
 
@@ -116,7 +142,9 @@ const SearchPage = () => {
             <div className="results__header">
               <h1 className="results__header--title">
                 Search Results:
-                {hasSearched &&<span className="results__header--query"> "{query}"</span>}
+                {hasSearched && (
+                  <span className="results__header--query"> "{query}"</span>
+                )}
               </h1>
               <select id="filter" onChange={handleSort}>
                 <option value="" disabled>

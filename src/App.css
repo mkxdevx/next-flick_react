@@ -174,6 +174,12 @@ RESULTS
     color: #e0e0e0;
 }
 
+/* 
+
+MOVIE
+
+*/
+
 .movies {
     display: grid;
     grid-template-columns: repeat(9, minmax(0, 1fr));
@@ -286,6 +292,11 @@ RESULTS
     100% {
         background-color: #333;
     }
+}
+
+.fa-arrow-left {
+    cursor: pointer;
+    color: #dc143c;
 }
 
 

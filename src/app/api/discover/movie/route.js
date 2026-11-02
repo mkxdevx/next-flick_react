@@ -5,7 +5,6 @@ export async function GET() {
     const data = await fetchTMDB("discover/movie");
 
     return Response.json(data);
-
   } catch (error) {
     return Response.json({ error: error.message }, { status: 502 });
   }

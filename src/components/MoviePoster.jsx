@@ -3,7 +3,6 @@ import Image from "next/image";
 import posterUnavailable from "../../src/assets/Poster-unavailable.png";
 
 const MoviePoster = ({ movie, isLoading }) => {
-  const [hasPosterError, setHasPosterError] = useState(false);
   if (isLoading) {
     return (
       <div
@@ -14,7 +13,7 @@ const MoviePoster = ({ movie, isLoading }) => {
   }
   return (
     <div>
-      {movie.poster_path || !hasPosterError ? (
+      {movie.poster_path ? (
         <Image
           src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
           alt={`${movie.title} poster`}
@@ -23,7 +22,6 @@ const MoviePoster = ({ movie, isLoading }) => {
           quality={75}
           priority
           className="movie__poster"
-          onError={() => setHasPosterError(true)}
         />
       ) : (
         <Image
@@ -34,7 +32,6 @@ const MoviePoster = ({ movie, isLoading }) => {
           quality={75}
           priority
           className="movie__poster"
-          onError={() => setHasPosterError(true)}
         />
       )}
     </div>

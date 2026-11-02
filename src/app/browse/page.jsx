@@ -1,4 +1,5 @@
+import BrowsePage from '../../components/BrowsePage';
 
 export default function Browse() {
-  return <div>browse</div>;
+  return <BrowsePage />;
 }

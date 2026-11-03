@@ -299,6 +299,39 @@ MOVIE
     color: #dc143c;
 }
 
+/* 
+
+MOVIE-INFO
+
+*/
+
+.movie__info--container {
+    margin: 35px 20px;
+    display: flex;
+}
+
+.movie__info--details {
+    margin-left: 40px;
+}
+
+.movie__info--title {
+    font-size: 32px;
+    margin-bottom: 8px;
+    color: #dc143c;
+}
+
+.movie__info--year {
+    font-size: 18px;
+    color: white;
+    margin-bottom: 16px;
+}
+
+.movie__info--description {
+    font-size: 16px;
+    line-height: 1.5;
+    color: white;
+}
+
 
 /* 
 

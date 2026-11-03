@@ -18,7 +18,7 @@ const MovieCard = ({ movie, isLoading }) => {
   const movieReleaseDate = movie.release_date?.slice(0,4) || "Release Date Unknown";
 
   return (
-    <div className="movie">
+    <div className="movie" >
       <MoviePoster movie={movie} isLoading={isLoading} />
       <h3 className="movie__title">{movie.title}</h3>
       <p className="movie__year">{movieReleaseDate}</p>

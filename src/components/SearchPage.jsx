@@ -20,9 +20,7 @@ const SearchPage = () => {
     setIsLoading(true);
 
     try {
-      const response = await fetch(
-        `/api/movies?query=${encodeURIComponent(searchQuery)}`,
-      );
+      const response = await fetch(`/api/movies?query=${searchQuery}`);
       const data = await response.json();
 
       if (!response.ok) {
@@ -103,7 +101,12 @@ const SearchPage = () => {
       <div className="movies">
         {movies.map((movie) => {
           return (
-            <MovieCard key={movie.id} movie={movie} isLoading={isLoading} />
+            <MovieCard
+              key={movie.id}
+              movie={movie}
+              isLoading={isLoading}
+              onClick={() => (movie.id)}
+            />
           );
         })}
       </div>

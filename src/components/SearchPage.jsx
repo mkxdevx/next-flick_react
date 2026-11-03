@@ -131,7 +131,7 @@ const SearchPage = () => {
               <form className="search__bar" onSubmit={handleSearch}>
                 <input
                   type="text"
-                  placeholder="Search movies..."
+                  placeholder="Find your movie..."
                   className="search__input"
                   value={query}
                   onChange={(event) => setQuery(event.target.value)}

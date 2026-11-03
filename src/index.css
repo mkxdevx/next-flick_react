@@ -34,6 +34,11 @@ button {
   cursor: pointer;
 }
 
+.vertical {
+  width: 1px;
+  height: 20px;
+}
+
 .crimson {
   color: #dc143c;
   font-weight: bold;

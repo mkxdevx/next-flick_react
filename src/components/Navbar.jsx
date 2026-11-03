@@ -29,13 +29,13 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link href="/search" className="nav__link">
-              Find your movie
+            <Link href="/browse" className="nav__link">
+              Browse
             </Link>
           </li>
           <li>
-            <Link href="/browse" className="nav__link nav__link--primary">
-              Browse
+            <Link href="/search" className="nav__link nav__link--primary">
+              Search movies
             </Link>
           </li>
         </ul>

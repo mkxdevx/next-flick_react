@@ -1,9 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import MovieCard from "./MovieCard";
-import { fetchTMDB } from "../../lib/tmdb";
 
 const SearchPage = () => {
   const [query, setQuery] = useState("");
@@ -11,6 +10,8 @@ const SearchPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [hasSearched, setHasSearched] = useState(false);
   const searchParams = useSearchParams();
+  const router = useRouter();
+
 
   const searchMovies = async (query) => {
     const searchQuery = query.trim();
@@ -80,6 +81,11 @@ const SearchPage = () => {
     }
   };
 
+  const handleMovieClick = (movieId) => {
+    console.log("Movie clicked:", movieId);
+    router.push(`/movie/${movieId}`);
+  };
+
   const feedContent = () => {
     if (!hasSearched) {
       return (
@@ -105,7 +111,7 @@ const SearchPage = () => {
               key={movie.id}
               movie={movie}
               isLoading={isLoading}
-              onClick={() => (movie.id)}
+              onSelect={() => handleMovieClick(movie.id)}
             />
           );
         })}

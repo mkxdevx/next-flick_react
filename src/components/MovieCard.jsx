@@ -1,27 +1,27 @@
-import { useState } from "react";
 import MovieSkeleton from "./MovieSkeleton";
 import MoviePoster from "./MoviePoster";
 
-const MovieCard = ({ movie, isLoading }) => {
+const MovieCard = ({ movie, isLoading, onSelect }) => {
+  const ReleaseDate =
+    movie.release_date?.slice(0, 4) || "Release Date Unknown";
+
   if (isLoading) {
     return <MovieSkeleton />;
   }
-  
+
   if (!movie) {
     return (
       <div>
         <span>No movie found</span>
       </div>
-    )
+    );
   }
 
-  const movieReleaseDate = movie.release_date?.slice(0,4) || "Release Date Unknown";
-
   return (
-    <div className="movie" >
-      <MoviePoster movie={movie} isLoading={isLoading} />
+    <div className="movie" onClick={onSelect}>
+      <MoviePoster moviePath={movie.poster_path} isLoading={isLoading} movieTitle={movie.title} />
       <h3 className="movie__title">{movie.title}</h3>
-      <p className="movie__year">{movieReleaseDate}</p>
+      <p className="movie__year">{ReleaseDate}</p>
     </div>
   );
 };

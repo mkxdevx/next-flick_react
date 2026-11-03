@@ -2,7 +2,11 @@ import { useState } from "react";
 import Image from "next/image";
 import posterUnavailable from "../../src/assets/Poster-unavailable.png";
 
-const MoviePoster = ({ movie, isLoading }) => {
+const MoviePoster = ({ moviePath, isLoading, movieTitle, large }) => {
+  const posterSrc = moviePath
+    ? `https://image.tmdb.org/t/p/w500${moviePath}`
+    : posterUnavailable;
+
   if (isLoading) {
     return (
       <div
@@ -12,29 +16,15 @@ const MoviePoster = ({ movie, isLoading }) => {
     );
   }
   return (
-    <div>
-      {movie.poster_path ? (
-        <Image
-          src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-          alt={`${movie.title} poster`}
-          width={500}
-          height={750}
-          quality={75}
-          priority
-          className="movie__poster"
-        />
-      ) : (
-        <Image
-          src={posterUnavailable}
-          alt={`${movie.title} poster`}
-          width={500}
-          height={750}
-          quality={75}
-          priority
-          className="movie__poster"
-        />
-      )}
-    </div>
+      <Image
+        src={posterSrc}
+        alt={`${movieTitle} poster`}
+        width={large ? 400 : 200}
+        height={large ? 600 : 350}
+        quality={75}
+        priority
+        className="movie__poster"
+      />
   );
 };
 

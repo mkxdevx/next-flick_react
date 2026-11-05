@@ -8,50 +8,46 @@ export default async function MovieInfo({ params }) {
   const movie = await fetchTMDB(`movie/${id}`);
   const movieReleaseDate =
     movie.release_date?.slice(0, 4) || "Release Date Unknown";
-    console.log(movie);
 
-  const movieRatingStars= () => {
+  const movieRatingStars = () => {
     const rating = movie.vote_average;
     const stars = [];
-    for (let i = 1; i <= 5; i++) {
-      i = i / 2;
-      if (rating >= i) {
-        stars.push(<i key={i} className="fa-solid fa-star" />);
-      } else if (rating >= i - 0.5) {
-        stars.push(<i key={i} className="fa-solid fa-star-half-stroke" />);
+    for (let star = 1; star <= 5; star++) {
+      if (rating >= star * 2) {
+        stars.push(<i key={star} className="fa-solid fa-star" />);
+      } else if (rating >= star * 2 - 1) {
+        stars.push(<i key={star} className="fa-solid fa-star-half-stroke" />);
       } else {
-        stars.push(<i key={i} className="fa-regular fa-star" />);
+        stars.push(<i key={star} className="fa-regular fa-star" />);
       }
-      console.log(i);
     }
     return stars;
-  }
+  };
 
   return (
-    <>
-      <div className="movie__backdrop">
-        <Image
-          src={
-            movie.backdrop_path
-              ? `https://image.tmdb.org/t/p/original${movie.backdrop_path}`
-              : poster
-          }
-          alt={`${movie.title} backdrop`}
-          fill
-          width="auto"
-          height="auto"
-          sizes="100vw"
-          style={{ objectFit: "cover" }}
-          quality={75}
-          priority
-        />
-        <Link href="/search">
-          <i className="fa-solid fa-circle-left fa-3x icon__overlay">
-            <div className="icon__overlay--inner" />
-          </i>
-        </Link>
-      </div>
-      <div className="movie__info--container">
+    <div className="movie__detail--layout">
+        <div className="movie__backdrop">
+          <Image
+            src={
+              movie.backdrop_path
+                ? `https://image.tmdb.org/t/p/original${movie.backdrop_path}`
+                : poster
+            }
+            alt={`${movie.title} backdrop`}
+            fill
+            sizes="100vw"
+            style={{ objectFit: "contain", objectPosition: "center top" }}
+            quality={75}
+            priority
+          />
+
+          <Link href="/search">
+            <i className="fa-solid fa-circle-left fa-3x icon__overlay">
+              <div className="icon__overlay--inner" />
+            </i>
+          </Link>
+        </div>
+        <div className="movie__info--container">
           <div className="movie__info--details">
             <h1 className="movie__info--title">{movie.title}</h1>
             <div className="movie__info--list">
@@ -64,6 +60,6 @@ export default async function MovieInfo({ params }) {
             <p className="movie__info--description">{movie.overview}</p>
           </div>
         </div>
-    </>
+    </div>
   );
 }

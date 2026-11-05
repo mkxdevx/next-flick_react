@@ -11,7 +11,6 @@ const HomePage = () => {
   const handleSearch = (event) => {
     event.preventDefault();
     router.push(`/search?query=${encodeURIComponent(query)}`);
-    console.log("Home search:", query);
   };
   return (
     <section id="landing">

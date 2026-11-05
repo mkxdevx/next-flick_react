@@ -17,11 +17,6 @@ body {
     radial-gradient(circle at top, rgba(220, 20, 60, 0.08), transparent 60%);
 }
 
-img {
-  max-width: 100%;
-  height: auto;
-}
-
 li {
   list-style-type: none;
 }
@@ -85,6 +80,8 @@ nav {
 
 .nav__logo--img {
   max-width: 60px;
+  width: auto;
+  height: auto;
 }
 
 .nav__logo--name {
@@ -251,6 +248,7 @@ LANDING PAGE
 .landing__logo {
   width: 100%;
   max-width: 456px;
+  height: auto;
 }
 
 .landing__search {
@@ -394,6 +392,7 @@ footer .container {
 .footer__logo {
   padding-bottom: 8px;
   max-width: 60px;
+  width: auto;
   height: 60px;
 }
 
@@ -427,6 +426,7 @@ footer .container {
 MEDIA
 
 */
+  
 
 @media (max-width: 768px) {
   .nav__link--list {

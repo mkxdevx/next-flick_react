@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useSearchParams, useRouter } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import MovieCard from "./MovieCard";
 
 const SearchPage = () => {
@@ -10,7 +10,6 @@ const SearchPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [hasSearched, setHasSearched] = useState(false);
   const searchParams = useSearchParams();
-  const router = useRouter();
 
 
   const searchMovies = async (query) => {
@@ -81,11 +80,6 @@ const SearchPage = () => {
     }
   };
 
-  const handleMovieClick = (movieId) => {
-    console.log("Movie clicked:", movieId);
-    router.push(`/movie/${movieId}`);
-  };
-
   const feedContent = () => {
     if (!hasSearched) {
       return (
@@ -111,7 +105,7 @@ const SearchPage = () => {
               key={movie.id}
               movie={movie}
               isLoading={isLoading}
-              onSelect={() => handleMovieClick(movie.id)}
+              movieId={movie.id}
             />
           );
         })}

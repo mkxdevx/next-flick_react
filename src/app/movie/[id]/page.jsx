@@ -6,6 +6,7 @@ import poster from "../../../assets/Poster-unavailable.png";
 export default async function MovieInfo({ params }) {
   const { id } = await params;
   const movie = await fetchTMDB(`movie/${id}`);
+  console.log(movie)
   const movieReleaseDate =
     movie.release_date?.slice(0, 4) || "Release Date Unknown";
 

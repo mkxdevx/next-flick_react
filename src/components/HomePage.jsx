@@ -1,17 +1,7 @@
-"use client";
-
-import { useState } from "react";
-import { useRouter } from "next/navigation";
 import Image from "next/image";
 import LightLogo from "../assets/logo-light(2).png";
 
 const HomePage = () => {
-  const [query, setQuery] = useState("");
-  const router = useRouter();
-  const handleSearch = (event) => {
-    event.preventDefault();
-    router.push(`/search?query=${encodeURIComponent(query)}`);
-  };
   return (
     <section id="landing">
       <div className="container">
@@ -23,15 +13,14 @@ const HomePage = () => {
               className="landing__logo"
               quality={75}
             />
-            <form className="landing__search" onSubmit={handleSearch}>
+            <form className="landing__search" action="/search" method="GET">
               <input
                 type="text"
                 placeholder="Search movies..."
                 className="landing__search--input"
-                value={query}
-                onChange={(event) => setQuery(event.target.value)}
+                name="query"
               ></input>
-              <button className="landing__search--btn">
+              <button className="landing__search--btn" type="submit">
                 <i className="fa solid fa-magnifying-glass"></i>
               </button>
             </form>

@@ -1,7 +1,7 @@
 import { fetchTMDB } from "../../../../lib/tmdb";
 import Link from "next/link";
 import Image from "next/image";
-import poster from "../../../assets/Poster-unavailable.png";
+import Backdrop from "../../../assets/backdrop-unavailable.png";
 
 export default async function MovieInfo({ params }) {
   const { id } = await params;
@@ -32,7 +32,7 @@ export default async function MovieInfo({ params }) {
             src={
               movie.backdrop_path
                 ? `https://image.tmdb.org/t/p/original${movie.backdrop_path}`
-                : poster
+                : Backdrop
             }
             alt={`${movie.title} backdrop`}
             fill

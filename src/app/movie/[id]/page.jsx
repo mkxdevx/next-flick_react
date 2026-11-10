@@ -27,40 +27,41 @@ export default async function MovieInfo({ params }) {
 
   return (
     <div className="movie__detail--layout">
-        <div className="movie__backdrop">
-          <Image
-            src={
-              movie.backdrop_path
-                ? `https://image.tmdb.org/t/p/original${movie.backdrop_path}`
-                : Backdrop
-            }
-            alt={`${movie.title} backdrop`}
-            fill
-            sizes="100vw"
-            style={{ objectFit: "contain", objectPosition: "center top" }}
-            quality={75}
-            priority
-          />
+      <div className="movie__backdrop">
+        <Image
+          src={
+            movie.backdrop_path
+              ? `https://image.tmdb.org/t/p/original${movie.backdrop_path}`
+              : Backdrop
+          }
+          alt={`${movie.title} backdrop`}
+          fill
+          sizes="100vw"
+          style={{ objectFit: "contain", objectPosition: "center top" }}
+          quality={75}
+          priority
+        />
 
-          <Link href="/search">
-            <i className="fa-solid fa-circle-left fa-3x icon__overlay">
-              <div className="icon__overlay--inner" />
-            </i>
-          </Link>
-        </div>
-        <div className="movie__info--container">
-          <div className="movie__info--details">
-            <h1 className="movie__info--title">{movie.title}</h1>
-            <div className="movie__info--list">
-              <p className="movie__info--year">{movieReleaseDate}</p>
-              <hr className="vertical" />
-              <p className="movie__info--runtime">{movie.runtime} min</p>
-              <hr className="vertical" />
-              <p className="movie__info--rating ">{movieRatingStars()}</p>
-            </div>
-            <p className="movie__info--description">{movie.overview}</p>
+        <Link href="/search">
+          <i className="fa-solid fa-circle-left fa-3x icon__overlay">
+            <div className="icon__overlay--inner" />
+            <span className="icon__overlay--text">Back to Search</span>
+          </i>
+        </Link>
+      </div>
+      <div className="movie__info--container">
+        <div className="movie__info--details">
+          <h1 className="movie__info--title">{movie.title}</h1>
+          <div className="movie__info--list">
+            <p className="movie__info--year">{movieReleaseDate}</p>
+            <hr className="vertical" />
+            <p className="movie__info--runtime">{movie.runtime} min</p>
+            <hr className="vertical" />
+            <p className="movie__info--rating ">{movieRatingStars()}</p>
           </div>
+          <p className="movie__info--description">{movie.overview}</p>
         </div>
+      </div>
     </div>
   );
 }

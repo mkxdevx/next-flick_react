@@ -188,7 +188,7 @@ MENU BAR
   left: 0;
   width: 100%;
   height: 100vh;
-  z-index: 3;
+  z-index: 1000;
   visibility: hidden;
   opacity: 0;
   transform: translateX(300%);
@@ -426,7 +426,7 @@ footer .container {
 MEDIA
 
 */
-  
+
 
 @media (max-width: 768px) {
   .nav__link--list {

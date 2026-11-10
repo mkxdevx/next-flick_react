@@ -1,6 +1,6 @@
 import Image from "next/image";
 import LightLogo from "../assets/logo-light(2).png";
-import SearchForm from "../components/SearchForm";
+import SearchForm from "../components/search/SearchForm";
 
 export default function Home() {
   return (

@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import MovieCard from "./MovieCard";
+import MovieCard from "../MovieCard";
 
 const SearchResults = ({ query, movies }) => {
   const [sortOrder, setSortOrder] = useState("");

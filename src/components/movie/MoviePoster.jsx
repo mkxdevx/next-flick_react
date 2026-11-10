@@ -1,6 +1,6 @@
 
 import Image from "next/image";
-import posterUnavailable from "../../src/assets/Poster-unavailable.png";
+import posterUnavailable from "../../../src/assets/Poster-unavailable.png";
 
 const MoviePoster = ({ moviePath, isLoading, movieTitle, large }) => {
   const posterSrc = moviePath

@@ -4,6 +4,7 @@ import Link from "next/link";
 
 const NavbarMenu = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  
   return (
     <>
       <button

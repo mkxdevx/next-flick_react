@@ -2,6 +2,7 @@ import { fetchTMDB } from "../../../../lib/tmdb";
 import Link from "next/link";
 import Image from "next/image";
 import Backdrop from "../../../assets/backdrop-unavailable.png";
+import RelatedMovies from "../../../components/RelatedMovies";
 
 export default async function MovieInfo({ params }) {
   const { id } = await params;
@@ -25,42 +26,49 @@ export default async function MovieInfo({ params }) {
   };
 
   return (
-    <div className="movie__detail--layout">
-      <div className="movie__backdrop">
-        <Image
-          src={
-            movie.backdrop_path
-              ? `https://image.tmdb.org/t/p/original${movie.backdrop_path}`
-              : Backdrop
-          }
-          alt={`${movie.title} backdrop`}
-          fill
-          sizes="100vw"
-          style={{ objectFit: "contain", objectPosition: "center top" }}
-          quality={75}
-          priority
-        />
+    <>
+      <div className="movie__detail--layout">
+        <div className="movie__backdrop">
+          <Image
+            src={
+              movie.backdrop_path
+                ? `https://image.tmdb.org/t/p/original${movie.backdrop_path}`
+                : Backdrop
+            }
+            alt={`${movie.title} backdrop`}
+            fill
+            sizes="100vw"
+            style={{ objectFit: "contain", objectPosition: "center top" }}
+            quality={75}
+            priority
+          />
 
-        <Link href="/search">
-          <i className="fa-solid fa-circle-left fa-3x icon__overlay">
-            <div className="icon__overlay--inner" />
-            <span className="icon__overlay--text">Back to Search</span>
-          </i>
-        </Link>
-      </div>
-      <div className="movie__info--container">
-        <div className="movie__info--details">
-          <h1 className="movie__info--title">{movie.title}</h1>
-          <div className="movie__info--list">
-            <p className="movie__info--year">{movieReleaseDate}</p>
-            <hr className="vertical" />
-            <p className="movie__info--runtime">{movie.runtime} min</p>
-            <hr className="vertical" />
-            <p className="movie__info--rating ">{movieRatingStars()}</p>
+          <Link href="/search">
+            <i className="fa-solid fa-circle-left fa-3x icon__overlay">
+              <div className="icon__overlay--inner" />
+              <span className="icon__overlay--text">Back to Search</span>
+            </i>
+          </Link>
+        </div>
+        <div className="movie__info-column">
+          <div className="movie__info--container">
+            <div className="movie__info--details">
+              <h1 className="movie__info--title">{movie.title}</h1>
+              <div className="movie__info--list">
+                <p className="movie__info--year">{movieReleaseDate}</p>
+                <hr className="vertical" />
+                <p className="movie__info--runtime">{movie.runtime} min</p>
+                <hr className="vertical" />
+                <p className="movie__info--rating ">{movieRatingStars()}</p>
+              </div>
+              <p className="movie__info--description">{movie.overview}</p>
+            </div>
           </div>
-          <p className="movie__info--description">{movie.overview}</p>
         </div>
       </div>
-    </div>
+      <div className="container">
+        <RelatedMovies movie={movie} />
+      </div>
+    </>
   );
 }

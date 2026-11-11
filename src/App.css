@@ -306,7 +306,6 @@ MOVIE-INFO
   display: flex;
   flex-direction: column;
   gap: 24px;
-  padding-inline: clamp(16px, 4vw, 48px);
 }
 
 .movie__info--container {
@@ -455,7 +454,7 @@ MEDIA
     align-items: flex-start;
     gap: 32px;
     margin: 56px 0;
-    padding-block: 40px;
+    padding-inline: clamp(16px, 4vw, 48px);
   }
 
   .movie__backdrop {

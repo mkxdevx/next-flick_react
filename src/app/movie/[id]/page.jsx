@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Backdrop from "../../../assets/backdrop-unavailable.png";
 import RelatedMovies from "../../../components/RelatedMovies";
+import MoviePoster from "../../../components/movie/MoviePoster";
 
 export default async function MovieInfo({ params }) {
   const { id } = await params;
@@ -26,7 +27,7 @@ export default async function MovieInfo({ params }) {
   };
 
   return (
-    <>
+    <div className="movie-page-layout row">
       <div className="movie__detail--layout">
         <div className="movie__backdrop">
           <Image
@@ -42,12 +43,20 @@ export default async function MovieInfo({ params }) {
             quality={75}
             priority
           />
-
+          
           <Link href="/search">
             <i className="fa-solid fa-circle-left fa-3x icon__overlay">
               <div className="icon__overlay--inner" />
-              <span className="icon__overlay--text">Back to Search</span>
             </i>
+          </Link>
+        </div>
+        <div className="poster__alternative">
+          <MoviePoster moviePath={movie.poster_path} />
+          <Link href="/search" className="poster__back-link">
+            <i className="fa-solid fa-circle-left fa-3x icon__overlay">
+              <div className="icon__overlay--inner" />
+            </i>
+            <span className="icon__overlay--text">Back to Search</span>
           </Link>
         </div>
         <div className="movie__info-column">
@@ -64,11 +73,9 @@ export default async function MovieInfo({ params }) {
               <p className="movie__info--description">{movie.overview}</p>
             </div>
           </div>
+          <RelatedMovies movie={movie} />
         </div>
       </div>
-      <div className="container">
-        <RelatedMovies movie={movie} />
-      </div>
-    </>
+    </div>
   );
 }

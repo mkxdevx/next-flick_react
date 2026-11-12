@@ -18,7 +18,7 @@ const RelatedMovies = async ({ movie }) => {
   }
 
   return <section className="related-movies">
-    <h2 className="related-movies__title">Related Movies</h2>
+    <h2 className="related-movies__header">Related Movies</h2>
     <div className="movies">
       {filteredMovies.map((movie) => (
         <MovieCard key={movie.id} movie={movie} movieId={movie.id} />

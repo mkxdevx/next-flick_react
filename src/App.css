@@ -1,11 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
-* {
-  font-family: "Montserrat", sans-serif;
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
 /* 
 
 SEARCH 
@@ -224,11 +216,14 @@ MOVIE
   animation: pulse 1.5s infinite;
 }
 
-.movie__title {
+.movie__title,
+.movie__year {
   width: 80%;
-  box-sizing: border-box;
   align-self: center;
   text-align: center;
+}
+
+.movie__title {
   font-size: 16px;
   line-height: 1.2;
   color: white;
@@ -238,10 +233,6 @@ MOVIE
 }
 
 .movie__year {
-  width: 80%;
-  box-sizing: border-box;
-  align-self: center;
-  text-align: center;
   color: #708090;
   font-size: 14px;
   margin: 2px 0 0;
@@ -255,8 +246,6 @@ MOVIE
 }
 
 .movie__skeleton {
-  display: flex;
-  flex-direction: column;
   align-items: center;
 }
 
@@ -373,9 +362,13 @@ MOVIE-INFO
   background-color: white;
 }
 
+.movie__info--details,
+.related-movies {
+  padding-inline: clamp(16px, 4vw, 48px);
+}
+
 .movie__info--details {
   width: 100%;
-  padding-inline: clamp(16px, 4vw, 48px);
 }
 
 .movie__info--title {
@@ -419,7 +412,6 @@ MOVIE-INFO
   width: 100%;
   min-width: 0;
   margin-top: 32px;
-  padding-inline: clamp(16px, 4vw, 48px);
 }
 
 .related-movies__header {
@@ -433,10 +425,6 @@ MOVIE-INFO
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 160px), 1fr));
   gap: 24px;
   align-items: start;
-}
-
-.related-movies .movie {
-  justify-content: flex-start;
 }
 
 .movie-page-layout.row {
@@ -536,6 +524,7 @@ MEDIA
     display: grid;
     grid-template-columns: minmax(0, 35fr) minmax(0, 65fr);
     grid-template-rows: auto;
+    align-items: stretch;
     column-gap: 8px;
     margin: 86px 72px;
     padding-inline: 48px;
@@ -563,6 +552,7 @@ MEDIA
     display: flex;
     flex-direction: column;
     min-width: 0;
+    min-height: 0;
     grid-column: 2;
     grid-row: 1;
   }
@@ -580,9 +570,8 @@ MEDIA
     flex-direction: column;
     flex: 1 1 0;
     min-height: 0;
-    margin-top: 8px;
-    padding-inline: clamp(16px, 4vw, 48px);
-    gap: 4px;
+    margin-top: 32px;
+    gap: 12px;
   }
 
   .related-movies__header {
@@ -607,7 +596,9 @@ MEDIA
 
   .related-movies .movie__poster--wrapper {
     display: flex;
-    flex: 1;
+    flex: 0 1 auto;
+    width: 100%;
+    aspect-ratio: 2 / 3;
     min-height: 0;
     overflow: hidden;
   }
@@ -633,6 +624,12 @@ MEDIA
   }
 }
 
+@media (min-width: 1363px) {
+  .related-movies .movie__poster--wrapper {
+    aspect-ratio: 0.72 / 1;
+  }
+}
+
 
 
 @media (max-width: 768px) {
@@ -646,33 +643,9 @@ MEDIA
   .search__icon--loading {
     font-size: 28px;
   }
-  .nav__link--list {
-    display: none;
-  }
-  .menu__btn--open {
-    display: block;
-  }
 }
 
 @media (max-width: 480px) {
-  .nav__logo--img {
-    max-width: 36px;
-  }
-  .nav__logo--name {
-    font-size: 20px;
-  }
-  .menu__btn {
-    font-size: 24px;
-  }
-  .nav__overlay--list {
-    gap: 36px;
-  }
-  .nav__overlay--link {
-    font-size: 32px;
-  }
-  .search__header--title {
-    font-size: 36px;
-  }
   .search__bar {
     max-width: 324px;
   }
@@ -693,20 +666,5 @@ MEDIA
   }
   #filter {
     max-width: 82px;
-  }
-  .footer__link {
-    font-size: 14px;
-    font-weight: 300;
-  }
-  .footer__logo {
-    width: 40px;
-    height: 40px;
-  }
-  .footer__social {
-    font-weight: 300;
-  }
-  .footer__copyright {
-    font-weight: 400;
-    font-size: 12px;
   }
 }

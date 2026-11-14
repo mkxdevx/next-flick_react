@@ -306,7 +306,7 @@ MOVIE-INFO
   min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 86px;
 }
 
 .movie__backdrop,
@@ -450,10 +450,6 @@ MEDIA
     padding-inline: 0;
   }
 
-  .movie-page-layout.row {
-    padding-inline: 48px;
-  }
-
   .movie__backdrop {
     display: none;
   }
@@ -517,6 +513,10 @@ MEDIA
     font-size: 24px;
     font-weight: 700;
   }
+
+  .movie-page-layout.row {
+  padding-inline: 48px;
+}
 }
 
 @media (min-width: 1286px) {
@@ -555,6 +555,7 @@ MEDIA
     min-height: 0;
     grid-column: 2;
     grid-row: 1;
+    gap: 24px;
   }
 
   .movie__info--container {
@@ -581,6 +582,7 @@ MEDIA
 
   .related-movies .movies {
     display: flex;
+    justify-content: space-evenly;
     flex: 1;
     min-height: 0;
     overflow-x: auto;
@@ -590,7 +592,7 @@ MEDIA
   .related-movies .movie {
     flex: 0 0 clamp(120px, 12vw, 220px);
     max-width: 220px;
-    height: 100%;
+    height: auto;
     min-height: 0;
   }
 
@@ -599,6 +601,7 @@ MEDIA
     flex: 0 1 auto;
     width: 100%;
     aspect-ratio: 2 / 3;
+    margin-bottom: 4px;
     min-height: 0;
     overflow: hidden;
   }
@@ -628,6 +631,7 @@ MEDIA
   .related-movies .movie__poster--wrapper {
     aspect-ratio: 0.72 / 1;
   }
+
 }
 
 

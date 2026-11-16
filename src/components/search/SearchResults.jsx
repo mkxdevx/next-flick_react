@@ -63,7 +63,7 @@ const SearchResults = ({ query, movies }) => {
           ) : (
             <div className="movies">
               {sortedMovies.map((movie) => (
-                <MovieCard key={movie.id} movie={movie} movieId={movie.id} />
+                  <MovieCard key={movie.id} movie={movie} from="search" query={query} />
               ))}
             </div>
           )}

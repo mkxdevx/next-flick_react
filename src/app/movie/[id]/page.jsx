@@ -5,8 +5,9 @@ import Backdrop from "../../../assets/backdrop-unavailable.png";
 import RelatedMovies from "../../../components/RelatedMovies";
 import MoviePoster from "../../../components/movie/MoviePoster";
 
-export default async function MovieInfo({ params }) {
+export default async function MovieInfo({ params, searchParams }) {
   const { id } = await params;
+  const { from, query } = await searchParams;
   const movie = await fetchTMDB(`movie/${id}`);
   const movieReleaseDate =
     movie.release_date?.slice(0, 4) || "Release Date Unknown";
@@ -26,6 +27,17 @@ export default async function MovieInfo({ params }) {
     return stars;
   };
 
+  const backLink = () => {
+    if (from === "search") {
+      return `/search?query=${query}`;
+    }
+    if (from === "browse") {
+      return "/browse";
+    }
+    return "/";
+  };
+  
+
   return (
     <div className="movie-page-layout row">
       <div className="movie__detail--layout">
@@ -44,7 +56,7 @@ export default async function MovieInfo({ params }) {
             priority
           />
           
-          <Link href="/search">
+          <Link href={backLink()}>
             <i className="fa-solid fa-circle-left fa-3x icon__overlay">
               <div className="icon__overlay--inner" />
             </i>
@@ -52,11 +64,13 @@ export default async function MovieInfo({ params }) {
         </div>
         <div className="poster__alternative">
           <MoviePoster moviePath={movie.poster_path} />
-          <Link href="/search" className="poster__back-link">
+          <Link href={backLink()} className="poster__back-link">
             <i className="fa-solid fa-circle-left fa-3x icon__overlay">
               <div className="icon__overlay--inner" />
             </i>
-            <span className="icon__overlay--text">Back to Search</span>
+            <span className="icon__overlay--text">
+              {from === "browse" ? "Back to Browse" : "Back to Search"}
+            </span>
           </Link>
         </div>
         <div className="movie__info-column">

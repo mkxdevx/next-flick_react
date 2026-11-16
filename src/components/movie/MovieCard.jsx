@@ -2,9 +2,14 @@ import Link from "next/link";
 import MovieSkeleton from "./MovieSkeleton";
 import MoviePoster from "./MoviePoster";
 
-const MovieCard = ({ movie, isLoading, movieId }) => {
+const MovieCard = ({ movie, isLoading, from, query }) => {
   const ReleaseDate =
     movie.release_date?.slice(0, 4) || "Release Date Unknown";
+  const params = new URLSearchParams({ from });
+
+  if (query) {
+    params.set("query", query);
+  }
 
   if (isLoading) {
     return <MovieSkeleton />;
@@ -19,7 +24,7 @@ const MovieCard = ({ movie, isLoading, movieId }) => {
   }
 
   return (
-    <Link href={`/movie/${movieId}`} className="movie">
+    <Link href={`/movie/${movie.id}?${params}`} className="movie">
       <MoviePoster moviePath={movie.poster_path} isLoading={isLoading} movieTitle={movie.title} />
       <h3 className="movie__title">{movie.title}</h3>
       <p className="movie__year">{ReleaseDate}</p>

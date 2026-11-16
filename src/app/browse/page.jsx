@@ -2,12 +2,8 @@ import { fetchTMDB } from "../../../lib/tmdb";
 import MovieList from "../../components/movie/MovieList";
 
 const Browse = async () => {
-
-    const data = await fetchTMDB('genre/movie/list');
-    const genre = data.genres;
-    console.log(genre);
-
-
+  const data = await fetchTMDB("genre/movie/list");
+  const genre = data.genres;
 
   return (
     <div>
@@ -15,7 +11,7 @@ const Browse = async () => {
         <MovieList key={g.id} genreId={g.id} genreName={g.name} />
       ))}
     </div>
-  )
-}
+  );
+};
 
-export default Browse
+export default Browse;

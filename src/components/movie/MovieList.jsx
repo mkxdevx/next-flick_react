@@ -14,7 +14,7 @@ const MovieList = async ({ genreId, genreName }) => {
       <div className="genre__movie--list">
         <div className="genre__movie--wrapper">
           {movies.map((movie) => (
-            <MovieCard key={movie.id} movie={movie} movieId={movie.id} />
+              <MovieCard key={movie.id} movie={movie} from="browse" />
           ))}
         </div>
       </div>

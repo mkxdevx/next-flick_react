@@ -420,7 +420,7 @@ MOVIE-INFO
   color: #fff;
 }
 
-.related-movies .movies {
+.related-movies .related-movies__header {
   width: 100%;
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 160px), 1fr));
   gap: 24px;
@@ -434,10 +434,63 @@ MOVIE-INFO
 
 /* 
 
+BROWSE
+
+*/
+
+
+.genre__container {
+  margin: 20px;
+}
+
+.genre__title {
+  font-size: 24px;
+  margin-bottom: 16px;
+  color: #fff;
+}
+
+.genre__movie--list {
+  overflow-x: auto;
+}
+
+.genre__movie--wrapper {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: calc((100% - 80px) / 8);
+  grid-template-rows: auto;
+  width: 100%;
+  gap: 16px;
+}
+
+.genre__movie--wrapper > .movie {
+  justify-content: flex-start;
+}
+
+.genre__movie--wrapper .movie__title {
+  display: none;
+}
+.genre__movie--wrapper .movie__year {
+  display: none;
+}
+
+
+/* 
+
 MEDIA
 
 */
 
+@media (max-width: 1146px) {
+  .genre__movie--wrapper {
+     grid-auto-columns: calc((100% - 80px) / 7);
+  }
+}
+
+@media (max-width: 1026px) {
+  .genre__movie--wrapper {
+    grid-auto-columns: calc((100% - 80px) / 6);
+  }
+}
 
 @media (min-width: 1026px) {
   .movie__detail--layout {
@@ -518,6 +571,7 @@ MEDIA
   padding-inline: 48px;
 }
 }
+
 
 @media (min-width: 1286px) {
   .movie-page-layout {
@@ -634,7 +688,11 @@ MEDIA
 
 }
 
-
+@media (max-width: 906px) {
+  .genre__movie--wrapper {
+    grid-auto-columns: calc((100% - 80px) / 5);
+  }
+}
 
 @media (max-width: 768px) {
   .search__header--title {
@@ -646,6 +704,33 @@ MEDIA
   .search__icon--default,
   .search__icon--loading {
     font-size: 28px;
+  }
+  .genre__title {
+    font-size: 18px;
+  }
+  .genre__movie--wrapper {
+     grid-auto-columns: calc((100% - 80px) / 4);
+  }
+}
+
+@media (max-width: 648px) {
+  .genre__title {
+    font-size: 18px;
+  }
+  .genre__movie--wrapper {
+    gap: 10px;
+  }
+  .movie__title {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 540px){
+  .genre__title {
+    font-size: 16px;
+  }
+  .genre__movie--wrapper {
+    grid-auto-columns: calc((100% - 80px) / 3);
   }
 }
 
@@ -670,5 +755,12 @@ MEDIA
   }
   #filter {
     max-width: 82px;
+  }
+  .genre__container {
+    margin: 15px 20px;
+  }
+  .genre__title {
+    margin-bottom: 8px;
+    font-size: 13px;
   }
 }

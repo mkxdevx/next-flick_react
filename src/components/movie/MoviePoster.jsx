@@ -16,12 +16,18 @@ const MoviePoster = ({ moviePath, isLoading, movieTitle, large }) => {
     );
   }
   return (
-    <div className="movie__poster--wrapper">
+    <div
+      className={`movie__poster--wrapper${large ? " movie__poster--wrapper-large" : ""}`}
+    >
       <Image
         src={posterSrc}
         alt={`${movieTitle} poster`}
-        width={large ? 400 : 200}
-        height={large ? 600 : 300}
+        fill
+        sizes={
+          large
+            ? "(min-width: 1286px) min(35vw, 464px), (min-width: 1026px) min(35vw, 430px), 1px"
+            : "(max-width: 220px) 100vw, 220px"
+        }
         quality={75}
         priority
         className="movie__poster"

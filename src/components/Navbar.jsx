@@ -12,6 +12,7 @@ const Navbar = () => {
             src={smallLightLogo}
             alt="Small Next Flick Logo"
             className="nav__logo--img"
+            sizes="(max-width: 480px) 36px, 60px"
             quality={75}
           />
           <h2 className="nav__logo--name">

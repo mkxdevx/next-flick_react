@@ -12,6 +12,7 @@ export default function Home() {
               src={LightLogo}
               alt="Next Flick Logo"
               className="landing__logo"
+              sizes="(max-width: 480px) 300px, 456px"
               quality={75}
             />
             <SearchForm

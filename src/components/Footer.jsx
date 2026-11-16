@@ -35,6 +35,7 @@ const Footer = () => {
               src={smallLightLogo}
               alt="Small Next Flick Logo"
               className="footer__logo"
+              sizes="(max-width: 480px) 40px, 60px"
               quality={75}
             />
             <div className="footer__socials">

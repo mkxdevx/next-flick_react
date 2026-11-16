@@ -63,7 +63,7 @@ export default async function MovieInfo({ params, searchParams }) {
           </Link>
         </div>
         <div className="poster__alternative">
-          <MoviePoster moviePath={movie.poster_path} />
+          <MoviePoster moviePath={movie.poster_path} large />
           <Link href={backLink()} className="poster__back-link">
             <i className="fa-solid fa-circle-left fa-3x icon__overlay">
               <div className="icon__overlay--inner" />

@@ -4,6 +4,7 @@ import Image from "next/image";
 import Backdrop from "../../../assets/backdrop-unavailable.png";
 import RelatedMovies from "../../../components/RelatedMovies";
 import MoviePoster from "../../../components/movie/MoviePoster";
+import MovieDescription from "../../../components/movie/MovieDescription";
 
 export default async function MovieInfo({ params, searchParams }) {
   const { id } = await params;
@@ -37,10 +38,6 @@ export default async function MovieInfo({ params, searchParams }) {
     return "/";
   };
 
-  const showMore = () => {
-    const shortOverview = movie.overview.slice(0, 200) + "...";
-    return shortOverview;
-  };
 
   return (
     <div className="movie-page-layout row">
@@ -88,9 +85,7 @@ export default async function MovieInfo({ params, searchParams }) {
                 <hr className="vertical" />
                 <p className="movie__info--rating ">{movieRatingStars()}</p>
               </div>
-              <p className="movie__info--description">{showMore()}
-                <span className="movie__description--button">Show More</span>
-              </p>
+              <MovieDescription overview={movie.overview} />
             </div>
           </div>
           <RelatedMovies movie={movie} />

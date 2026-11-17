@@ -402,6 +402,8 @@ MOVIE-INFO
 }
 
 .movie__description--button {
+  border: none;
+  background: none;
   text-align: center;
   color: #555;
   font-size: 16px;
@@ -453,11 +455,13 @@ MOVIE-INFO
   display: none;
 }
 
+
 /* 
 
 BROWSE
 
 */
+
 
 .genre__container {
   margin: 32px 20px;
@@ -493,6 +497,22 @@ BROWSE
   display: none;
 }
 
+
+/* 
+
+LOADING
+
+*/
+
+
+.movie__backdrop--loading {
+  position: absolute;
+  inset: 0;
+  background: #333;
+  animation: pulse 1.5s infinite;
+}
+
+
 /* 
 
 MEDIA
@@ -517,7 +537,6 @@ MEDIA
     grid-template-columns: minmax(0, 35vw) minmax(0, 1fr);
     grid-template-rows: auto auto;
     align-items: start;
-    column-gap: 8px;
     margin: 72px 20px;
     padding-inline: 0;
   }
@@ -544,10 +563,6 @@ MEDIA
     grid-row: 1;
     width: 100%;
     margin: 0;
-  }
-
-  .movie__info-column {
-    display: contents;
   }
 
   .related-movies {
@@ -589,6 +604,7 @@ MEDIA
   .movie-page-layout.row {
     padding-inline: 48px 20px;
   }
+ 
 }
 
 @media (min-width: 1286px) {

@@ -7,14 +7,6 @@ const MoviePoster = ({ moviePath, isLoading, movieTitle, large }) => {
     ? `https://image.tmdb.org/t/p/w500${moviePath}`
     : posterUnavailable;
 
-  if (isLoading) {
-    return (
-      <div
-        className="movie__poster movie__poster--loading"
-        aria-hidden="true"
-      />
-    );
-  }
   return (
     <div
       className={`movie__poster--wrapper${large ? " movie__poster--wrapper-large" : ""}`}

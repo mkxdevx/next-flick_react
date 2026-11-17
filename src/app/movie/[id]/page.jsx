@@ -36,7 +36,11 @@ export default async function MovieInfo({ params, searchParams }) {
     }
     return "/";
   };
-  
+
+  const showMore = () => {
+    const shortOverview = movie.overview.slice(0, 200) + "...";
+    return shortOverview;
+  };
 
   return (
     <div className="movie-page-layout row">
@@ -84,7 +88,9 @@ export default async function MovieInfo({ params, searchParams }) {
                 <hr className="vertical" />
                 <p className="movie__info--rating ">{movieRatingStars()}</p>
               </div>
-              <p className="movie__info--description">{movie.overview}</p>
+              <p className="movie__info--description">{showMore()}
+                <span className="movie__description--button">Show More</span>
+              </p>
             </div>
           </div>
           <RelatedMovies movie={movie} />

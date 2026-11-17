@@ -2,7 +2,7 @@ import { fetchTMDB } from "../../lib/tmdb";
 import MovieCard from "./movie/MovieCard";
 
 const RelatedMovies = async ({ movie }) => {
-  const maxMovies = 5;
+  const maxMovies = 6;
   let relatedMovies = [];
 
   if (movie.belongs_to_collection?.id) {

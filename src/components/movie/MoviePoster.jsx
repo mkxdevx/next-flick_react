@@ -2,7 +2,7 @@
 import Image from "next/image";
 import posterUnavailable from "../../../src/assets/Poster-unavailable.png";
 
-const MoviePoster = ({ moviePath, isLoading, movieTitle, large }) => {
+const MoviePoster = ({ moviePath, movieTitle, large }) => {
   const posterSrc = moviePath
     ? `https://image.tmdb.org/t/p/w500${moviePath}`
     : posterUnavailable;
@@ -21,7 +21,6 @@ const MoviePoster = ({ moviePath, isLoading, movieTitle, large }) => {
             : "(max-width: 220px) 100vw, 220px"
         }
         quality={75}
-        priority
         className="movie__poster"
       />
     </div>

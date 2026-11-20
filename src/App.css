@@ -206,14 +206,6 @@ MOVIE
   transition: all 300ms ease;
 }
 
-.movie__poster--loading {
-  background-color: #333;
-  border-radius: 4px;
-  height: 200px;
-  width: 100%;
-  animation: pulse 1.5s infinite;
-}
-
 .movie__title,
 .movie__year {
   width: 80%;
@@ -243,32 +235,6 @@ MOVIE
   text-align: center;
 }
 
-.movie__skeleton {
-  align-items: center;
-}
-
-.skeleton {
-  background-color: #333;
-  border-radius: 4px;
-  margin: 10px 0;
-  animation: pulse 1.5s infinite;
-}
-
-.skeleton__img {
-  height: 200px;
-  width: 100%;
-}
-
-.skeleton__movie--title {
-  margin-top: 8px;
-  height: 20px;
-  width: 80%;
-}
-
-.skeleton__movie--year {
-  height: 20px;
-  width: 60%;
-}
 
 @keyframes pulse {
   0% {
@@ -500,16 +466,71 @@ BROWSE
 
 /* 
 
-LOADING
+SKELETON STATES
 
 */
 
 
-.movie__backdrop--loading {
+.visually-hidden {
+  display: none;
+}
+
+.movie__backdrop--skeleton {
   position: absolute;
   inset: 0;
   background: #333;
   animation: pulse 1.5s infinite;
+}
+
+.movie__poster--skeleton {
+  background-color: #333;
+  border-radius: 4px;
+  height: 600px;
+  width: 100%;
+  animation: pulse 1.5s infinite;
+}
+
+.skeleton__large--title {
+  width: 40%;
+  height: 40px;
+}
+
+.movie__skeleton {
+  align-items: center;
+}
+
+.skeleton {
+  background-color: #333;
+  border-radius: 4px;
+  animation: pulse 1.5s infinite;
+}
+
+.skeleton__img {
+  height: 200px;
+  width: 100%;
+}
+
+.skeleton__movie--title {
+  height: 20px;
+  width: 80%;
+}
+
+.skeleton__movie--long-text {
+  height: 20px;
+  width: 90%;
+}
+
+.skeleton__movie--short-text {
+  height: 20px;
+  width: 10%;
+}
+
+.movie__skeleton--rating .fa-star {
+  color: #555;
+}
+
+.movie__info--description .skeleton {
+  margin-bottom: 10px;
 }
 
 
@@ -621,10 +642,6 @@ MEDIA
 
   .movie__detail--layout {
     display: contents;
-  }
-
-  .movie__info-column {
-    display: flex;
   }
 
   .related-movies__header {

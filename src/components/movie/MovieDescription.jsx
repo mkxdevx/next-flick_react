@@ -12,14 +12,18 @@ const MovieDescription = ({ overview }) => {
   if(overview.length <= 200) {
     return (
       <div className="movie__info--description">
-        <p>{overview}</p>
+        <div className="movie__info--text">
+          <p>{overview}</p>
+        </div>
       </div>
     );
   }
 
   return (
     <div className="movie__info--description">
-      <p>{isExpanded ? overview : overview.slice(0, 200) + "..."}</p>
+      <div className="movie__info--text">
+        <p>{isExpanded ? overview : overview.slice(0, 200) + "..."}</p>
+      </div>
       <button
         className="movie__description--button"
         onClick={toggleDescription}

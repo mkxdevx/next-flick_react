@@ -1,6 +1,8 @@
 import SearchForm from "../../components/search/SearchForm";
 import SearchResults from "../../components/search/SearchResults";
 import { fetchTMDB } from "../../../lib/tmdb";
+import SearchResultsSkeleton from "../../components/search/SearchResultsSkeleton";
+import { Suspense } from "react";
 
 export default async function Search({ searchParams }) {
   const params = await searchParams;
@@ -38,7 +40,11 @@ export default async function Search({ searchParams }) {
           </div>
         </div>
       </section>
-      <SearchResults query={query} movies={movies} />
+      {query && (
+        <Suspense fallback={<SearchResultsSkeleton />}>
+          <SearchResults query={query} movies={movies} />
+        </Suspense>
+      )}
     </>
   );
 }

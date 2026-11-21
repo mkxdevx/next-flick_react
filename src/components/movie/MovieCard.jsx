@@ -1,11 +1,7 @@
 import Link from "next/link";
-import MovieSkeleton from "./MovieSkeleton";
 import MoviePoster from "./MoviePoster";
 
-const MovieCard = ({ movie, isLoading, from, query }) => {
-  if (isLoading) {
-    return <MovieSkeleton />;
-  }
+const MovieCard = ({ movie, from, query }) => {
 
   if (!movie) {
     return (
@@ -26,7 +22,6 @@ const MovieCard = ({ movie, isLoading, from, query }) => {
     <Link href={`/movie/${movie.id}?${params}`} className="movie">
       <MoviePoster
         moviePath={movie.poster_path}
-        isLoading={isLoading}
         movieTitle={movie.title}
       />
       <h3 className="movie__title">{movie.title}</h3>

@@ -1,6 +1,3 @@
-import Image from "next/image";
-import MovieSkeleton from "../../../components/movie/MovieSkeleton";
-
 
 const loading = () => {
   return (

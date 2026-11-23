@@ -43,7 +43,7 @@ const SearchResults = ({ query, movies }) => {
               value={sortOrder}
               onChange={(event) => setSortOrder(event.target.value)}
             >
-              <option value="" disabled>
+              <option value="" defaultValue disabled>
                 Sort by
               </option>
               <option value="A_TO_Z">Sort A-Z</option>
